@@ -256,7 +256,7 @@ def scrape_check(links, session_manager: session_manager, api_type):
             item["result"] = result
         return item
     media_set = []
-    max_attempts = 100
+    max_attempts = 10
     count = len(links)
     api_type = api_type.capitalize()
     for attempt in list(range(max_attempts)):
