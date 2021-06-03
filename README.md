@@ -18,12 +18,6 @@ https://github.com/DIGITALCRIMINAL/OnlyFans/discussions/889
 
 ## Running the app locally
 
-You need to install C++ Build Tools for the deephash module.
-
-(I'll probably end up using something else since this is an annoying requirement)
-
-https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
-
 From the project folder open CMD/Terminal and run the command below:
 
 `pip install -r requirements.txt`
@@ -205,6 +199,7 @@ Usage: Select the resolution of the video.
     240p = "240" | "240p"
 
 ### auto_site_choice:
+Types: list|int|str|bool
 
 Usage: You can automatically choose which site you want to scrape.
 
@@ -212,25 +207,26 @@ Usage: You can automatically choose which site you want to scrape.
 
     OnlyFans = "onlyfans"
 
-### auto_choice:
+### auto_media_choice:
+Types: list|int|str|bool
 
 Usage: You can automatically choose which media type you want to scrape.
-Default = ""
 
-    Everything = "a"
-    Images = "b"
-    Videos = "c"
-    Audios = "d"
+    Default = ""
+
+    Inputs: Images, Videos, etc
+    Inputs: 0,1,etc
 
     You can automatically choose which type of media you want to scrape.
 
-### auto_scrape_names:
+### auto_model_choice:
+Types: list|int|str|bool
 
     Default = false
 
     If set to true, the script will scrape all the names.
 
-### auto_scrape_apis:
+### auto_api_choice:
 
     Default = true
 

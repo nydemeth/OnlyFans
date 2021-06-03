@@ -1,4 +1,5 @@
-from apis.onlyfans.onlyfans import media_types
+from apis.onlyfans.classes.extras import media_types
+from apis.onlyfans.classes.create_auth import create_auth
 import copy
 from enum import unique
 import os
@@ -14,11 +15,11 @@ global_version = 2
 
 
 class create_metadata(object):
-    def __init__(self, api=None, metadata: dict = {}, standard_format=False, api_type: str = "") -> None:
+    def __init__(self, authed: create_auth = None, metadata: dict = {}, standard_format=False, api_type: str = "") -> None:
         self.version = global_version
         fixed_metadata = self.fix_metadata(metadata, standard_format, api_type)
         self.content = format_content(
-            api, fixed_metadata["version"], fixed_metadata["content"]).content
+            authed, fixed_metadata["version"], fixed_metadata["content"]).content
 
     def fix_metadata(self, metadata, standard_format=False, api_type: str = "") -> dict:
         new_format = {}
@@ -127,7 +128,7 @@ class create_metadata(object):
 
 
 class format_content(object):
-    def __init__(self, api=None, version=None, old_content: dict = {}, export=False, reformat=False, args={}):
+    def __init__(self, authed=None, version=None, old_content: dict = {}, export=False, reformat=False, args={}):
 
         class assign_state(object):
             def __init__(self) -> None:
